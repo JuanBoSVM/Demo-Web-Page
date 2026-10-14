@@ -1,86 +1,266 @@
-/* General style for the pages */
-body{
-    background-color: black;
-    color: white;
+/* Global variables */
+:root {
+    --bg: black;
+    --text: white;
+    --primary: lightblue;
+    --accent: orange;
+    --hover: orangered;
+    --panel: #ffffff11;
+
+    --border: 0.5vh;
+    --bar-height: 5vh;
+    --min-bar-height: 60px;
+    --transition: 0.3s ease-in-out;
+
+    --splat: url("../img/splat.svg");
+    --splat-filter: invert(63%) sepia(98%) saturate(1086%)
+        hue-rotate(355deg) brightness(96%) contrast(112%);
+    --splat-hover-filter: invert(46%) sepia(94%) saturate(5144%)
+        hue-rotate(1deg) brightness(102%) contrast(106%);
 }
 
-/* Containers for elements */
-div.container{
-    /* Size */
-    width: 100%;
-    height: 100%;
+/* General page style */
+body {
+    position: relative;
+    isolation: isolate;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 1.2em;
+}
 
-    /* Display */
+/* Shared navigation and footer dimensions */
+nav,
+footer {
     display: flex;
-    justify-content: center;
     align-items: center;
-    
-    /* Borders */
-    border: 2px solid white;
-    border-radius: 10px;
+    justify-content: center;
+    width: auto;
+    height: var(--bar-height);
+    min-height: var(--min-bar-height);
+    background: var(--primary);
 }
 
-/* Header with links to the other pages */
-div.header{
-    /* Evenly space and arrange all the links */
-    display: table;
-    table-layout: fixed;
+/* Shared borders */
+nav,
+footer,
+header,
+section {
+    border: var(--border) solid var(--primary);
 }
 
-/* Links within the header */
-div.header a{
-    /* Background and borders */
-    background-color: lightblue;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+/* Shared panel styles */
+header,
+section {
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    background: var(--panel);
+}
 
-    /* Display */
-    display: table-cell;
-    
-    /* Text formatting */
+/* Page header */
+header {
+    padding: 1em;
     text-align: center;
-    color: black;
+}
+
+/* Section headers */
+section h2,
+header h1 {
+    margin-top: 0;
+    font-size: 2em;
+    text-align: center;
+    color: var(--primary);
+}
+
+/* Paragraphs */
+section p {
+    margin: 0.5em 0;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+/* Paragraph images container */
+div.paragraph-image-container {
+    display: flex;
+    direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+/* Paragraph images */
+div.paragraph-image-container img {
+    height: auto;
+    max-width: 50%;
+    border-radius: 1em;
+}
+
+/* Character gallery */
+div.character-gallery {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+/* Character gallery containers */
+div.character-gallery div {
+    display: flex;
+    flex-direction: column;
+
+    width: 30%;
+    height: 45vw;
+    border: var(--border) solid var(--accent);
+    border-radius: 1em;
+}
+
+/* Character gallery images */
+div.character-gallery div img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+/* Character gallery captions */
+div.character-gallery div p {
+    margin-top: calc(7.5vw - 0.6em);
+    margin-bottom: auto;
+
+    text-align: center;
+    font-size: 1.2em;
+    color: var(--text);
+
+    text-decoration: underline var(--accent) 0.1em;
+    text-underline-offset: -1.5em;
+}
+
+/* Lists */
+ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    margin: 0.5em 0;
+    padding-left: 40%;
+    line-height: 1.5;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    margin: 1em 0;
+    border-collapse: collapse;
+}
+
+/* Table column headers */
+th {
+    padding: 0.5em;
+    background: var(--primary);
+    color: var(--bg);
+    text-align: center;
+    border: var(--border) solid var(--accent);
+}
+
+/* Table header */
+tr:first-child th {
+    font-size: 2em;
+    border: none;
+    background: none;
+    padding-bottom: 1.5em;
+    color: var(--primary);
+}
+
+/* Table data */
+td {
+    padding: 0.5em;
+    border: var(--border) solid var(--accent);
+    text-align: center;
+}
+
+/* Navigation bar */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 0 0 var(--border);
+    border-color: var(--accent);
+}
+
+/* Navigation links */
+nav a {
+    position: relative;
+    isolation: isolate;
+    padding: 0.8em;
+    color: var(--bg);
     text-decoration: none;
-    line-height: 1.1em;
-
-    /* Transitions for smooth hover effects */
-    transition: background-color 0.3s ease-in-out;
-    transition: transform 0.3s ease-in-out;
-    transition: line-height 0.3s ease-in-out;
-    transition: font-size 0.3s ease-in-out;
+    transition:
+        text-decoration-color var(--transition),
+        text-decoration-thickness var(--transition),
+        text-underline-offset var(--transition);
 }
 
-/* Hover state for the links within the header*/
-div.header a:hover{
-    /* Background and borders */
-    background-color: lightsteelblue;
-
-    /* Size */
-    transform: scale(0.99);
-    line-height: 1. 0em;
-    font-size: 1.1em;
-
-    /* Make the transitions smooth */
-    transition: background-color 0.3s ease-in-out;
-    transition: transform 0.3s ease-in-out;
-    transition: line-height 0.3s ease-in-out;
-    transition: font-size 0.3s ease-in-out;
+/* Active or hovered navigation links */
+nav a.active,
+nav a:hover {
+    color: var(--bg);
+    text-decoration: underline var(--accent) 0.2em;
+    text-underline-offset: 0.5em;
 }
 
-div.header a:first-child{
-    /* Special border */
-    border-left: 2px solid black;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+/* Show the highlight image for active and hovered links */
+nav a.active::before,
+nav a:hover::before {
+    opacity: 1;
 }
 
-/* Last link within the header */
-div.header a:last-child{
-    /* Special border */
-    border-right: 2px solid black;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+/* Change the underline color when hovering over the active link */
+nav a.active:hover {
+    text-decoration-color: var(--hover);
 }
 
+/* Change the highlight image filter when hovering over the active link */
+nav a.active:hover::before {
+    filter: var(--splat-hover-filter);
+}
+
+/* Shared background artwork properties */
+nav a::before,
+body::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--splat) no-repeat center;
+    filter: var(--splat-filter);
+}
+
+/* Navigation highlight image */
+nav a::before {
+    inset: 0;
+    background-size: contain;
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+/* Decorative page background image */s
+body::before {
+    inset: 0;
+    background-position: center 20vh;
+    background-size: 75%;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Footer */
+footer {
+    flex-direction: column;
+    padding: 1em;
+    border-width: var(--border) 0 0;
+    border-color: var(--accent);
+    color: var(--bg);
+    text-align: center;
+}
+
+/* Footer text */
+footer p {
+    margin: 0.2em;
+}

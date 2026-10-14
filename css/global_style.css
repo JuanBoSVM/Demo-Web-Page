@@ -26,6 +26,7 @@ body {
     background: var(--bg);
     color: var(--text);
     font-size: 1.2em;
+    font-family: "Times New Roman", sans-serif;
 }
 
 /* Shared navigation and footer dimensions */
@@ -250,7 +251,7 @@ nav a::before {
     transition: opacity var(--transition);
 }
 
-/* Decorative page background image */s
+/* Decorative page background image */
 body::before {
     inset: 0;
     background-position: center 20vh;
@@ -267,6 +268,10 @@ footer {
     border-color: var(--accent);
     color: var(--bg);
     text-align: center;
+    
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 /* Footer text */

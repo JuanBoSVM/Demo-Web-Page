@@ -4,6 +4,60 @@
         <link rel="stylesheet" type="text/css" href="../css/global_style.css">
         
         <title>Splaoon 3 - Contact</title>
+
+<style>
+    form {
+        padding: 0.5em;
+        border: var(--border) solid var(--accent);
+        border-radius: 0.5em;
+        background-color: darkslategray;
+        background-blend-mode: multiply;
+        opacity: 0.9;
+        color: var(--text);
+
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+    }
+
+    label {
+        font-weight: bold;
+        height: 1.5em;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        border-radius: 0.5em;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+        height: 3em;
+    }
+
+    input[type="submit"] {
+        background-color: var(--accent);
+        color: var(--bg);
+        border: none;
+        border-radius: 0.5em;
+        height: 3em;
+        cursor: pointer;
+        
+        font-size: 1em;
+
+        transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+    }
+
+    input[type="submit"]:hover {
+        transform: scale(1, 1.05);
+        font-size: 1.1em;
+    }
+</style>
+
     </head>
 
     <body>
@@ -16,18 +70,27 @@
         
         <main>
             <section>
-                <h2>
+                <h2 style="text-align: center; margin-bottom: 2em;">
                     Send us a message!
                 </h2>
                 
-                <form>
-                    
+                <form action="index.html" method="get">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="john.doe@example.com" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="10" placeholder="Your message here..." required></textarea>
+
+                    <input type="submit" value="Send!">
                 </form>
 
             </section>
         </main>
     
-        <footer>
+        <footer style="position: fixed; bottom: 0; width: 100%;">
             <p>Splatoon 3 Info Website</p>
             <p>Created for an Web Programming class project.</p>
         </footer>
